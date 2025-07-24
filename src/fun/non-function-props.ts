@@ -1,11 +1,11 @@
 type AnyFunction = (...args: unknown[]) => unknown;
 
-type NonFunctionProps<T> = {
-  [K in keyof T]: T[K] extends AnyFunction ? never : T[K];
-};
-
 type NonFunctionKeys<T> = {
   [K in keyof T]: T[K] extends AnyFunction ? never : K;
+}[keyof T];
+
+type OnlyFunctionKeys<T> = {
+  [K in keyof T]: T[K] extends AnyFunction ? K : never;
 }[keyof T];
 
 type User = {
@@ -14,6 +14,8 @@ type User = {
   fullName: () => string;
 };
 
-type UserWithoutFunctions = NonFunctionProps<User>;
-
 type UserWithoutFunctionsKeys = NonFunctionKeys<User>;
+
+type UserWithFunctionsOnlyKeys = OnlyFunctionKeys<User>;
+
+type UserWithoutFunctionsOnly = Omit<User, OnlyFunctionKeys<User>>;
