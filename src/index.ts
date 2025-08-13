@@ -1,5 +1,16 @@
-import unarray from './fun/unarray.js';
-import asConst from './fun/as-const.js';
+type Foo = {
+  bar: string;
+  somethineElse: number;
+};
 
-//unarray();
-asConst();
+type FooKeys = keyof Foo;
+
+type FooValue = Foo[keyof Foo];
+
+const x: FooKeys = 'somethineElse';
+
+const y: FooValue = 4;
+const z: FooValue = 'some';
+
+// ❌ Type 'boolean' is not assignable to type 'FooValue'.
+// const bad: FooValue = true;

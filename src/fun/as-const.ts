@@ -4,7 +4,8 @@ const routes = {
   user: '/app/user',
 } as const;
 
-type Route = (typeof routes)[keyof typeof routes];
+type Routes = typeof routes;
+type Route = Routes[keyof Routes];
 
 function doSomethingWithARoute(route: Route) {
   console.log('navigate to ', route);
@@ -12,4 +13,7 @@ function doSomethingWithARoute(route: Route) {
 
 export default function () {
   doSomethingWithARoute('/app');
+
+  // ❌ Argument of type '"foobar"' is not assignable to parameter of type 'Route'.
+  // doSomethingWithARoute('foobar')
 }
