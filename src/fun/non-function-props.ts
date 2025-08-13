@@ -18,4 +18,4 @@ type UserWithoutFunctionsKeys = NonFunctionKeys<User>;
 
 type UserWithFunctionsOnlyKeys = OnlyFunctionKeys<User>;
 
-type UserWithoutFunctionsOnly = Omit<User, OnlyFunctionKeys<User>>;
+type UserWithoutFunctions = Omit<User, OnlyFunctionKeys<User>>;

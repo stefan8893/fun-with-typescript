@@ -13,5 +13,6 @@ function getColorFor(key: ConfigKey) {
 export default function () {
   getColorFor('primary'); // ✔️ '#ff0000'
   getColorFor('danger'); // ✔️ '#ff5555'
-  //getColorFor('warning');
+  // ❌ Argument of type '"warning"' is not assignable to parameter of type '"primary" | "secondary" | "danger"'.
+  // getColorFor('warning');
 }

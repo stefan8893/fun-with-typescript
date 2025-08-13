@@ -2,7 +2,7 @@ type Enumerate<
   N extends number,
   Acc extends number[] = [1]
 > = Acc['length'] extends N
-  ? N | Acc[number]
+  ? Acc[number] | N
   : Enumerate<N, [...Acc, Acc['length']]>;
 
 type ChessNumber = Enumerate<8>;
